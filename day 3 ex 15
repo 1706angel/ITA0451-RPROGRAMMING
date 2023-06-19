@@ -1,10 +1,10 @@
-library(plotrix)
-Political_Knowledge <- c("Low", "Medium", "High")
-Values <- c(10, 20, 70)
-Colors <- c("#F8766D", "#00BFC4", "#619CFF")
-pie3D(Values, labels = Political_Knowledge, explode = 0.1, col = Colors, 
-      main = "Political Knowledge", radius = 1, theta = 1, 
-      explodeIndex = 3, labelcex = 0.8, 
-      labelcol = "black", clockwise = FALSE, 
-      density = NULL, border = "black")
-legend("topright", Political_Knowledge, cex = 0.8, fill = Colors)
+# Define the vectors
+H <- c(7, 12, 28, 3, 41)
+M <- c("mar", "apr", "may", "jun", "jul")
+
+# Create a bar chart
+barplot(H, names.arg = M, main = "Revenue chart")
+
+# Add labels to the axes
+xlab("Month")
+ylab("Revenue")
