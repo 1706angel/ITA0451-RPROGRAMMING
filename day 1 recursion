@@ -1,0 +1,10 @@
+sum_natural_numbers &lt;- function(n) {
+if (n == 1) {
+return(1)
+} else {
+return(n + sum_natural_numbers(n-1))
+}
+}
+
+sum_n &lt;- sum_natural_numbers(5)
+print(sum_n)
