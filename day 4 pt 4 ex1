@@ -1,0 +1,25 @@
+# Load the iris dataset
+data(iris)
+
+# Set the seed for reproducibility
+set.seed(123)
+
+# Randomly sample the dataset
+train_indices &lt;- sample(1:nrow(iris), 0.8 * nrow(iris)) # 80% for training
+train_data &lt;- iris[train_indices, ]
+test_data &lt;- iris[-train_indices, ]
+
+# Create a logistic regression model
+library(nnet)
+model &lt;- multinom(Species ~ Petal.Width + Petal.Length, data = train_data)
+
+# Predict probabilities using the test data
+predicted_probs &lt;- predict(model, newdata = test_data, type = &quot;probs&quot;)
+
+# Create the confusion matrix
+predicted_classes &lt;- colnames(predicted_probs)[apply(predicted_probs, 1, which.max)]
+actual_classes &lt;- test_data$Species
+confusion_matrix &lt;- table(Actual = actual_classes, Predicted = predicted_classes)
+
+# Print the confusion matrix
+print(confusion_matrix)
