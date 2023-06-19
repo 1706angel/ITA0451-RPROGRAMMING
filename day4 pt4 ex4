@@ -1,0 +1,23 @@
+# Load the airquality dataset
+data(airquality)
+
+# (i) Get the Summary Statistics of airquality dataset
+summary_stats &lt;- summary(airquality)
+print(summary_stats)
+
+# (ii) Melt airquality dataset and display as long-format data
+library(reshape2)
+melted_data &lt;- melt(airquality)
+print(melted_data)
+
+# (iii) Melt airquality dataset and specify month and day as &quot;ID variables&quot;
+melted_data_id &lt;- melt(airquality, id.vars = c(&quot;Month&quot;, &quot;Day&quot;))
+print(melted_data_id)
+
+# (iv) Cast the molten airquality dataset with respect to month and day features
+casted_data &lt;- dcast(melted_data_id, Month + Day ~ variable)
+print(casted_data)
+
+# (v) Compute the average of Ozone, Solar.R, Wind, and Temperature per month using cast function
+avg_per_month &lt;- dcast(melted_data, Month ~ variable, mean)
+print(avg_per_month)
