@@ -1,0 +1,8 @@
+data(ChickWeight)
+ordered_data &lt;- ChickWeight[order(ChickWeight$weight), ]
+
+tail(ordered_data, 6)
+library(reshape2)
+melted_data &lt;- melt(ChickWeight, id.vars = c(&quot;Chick&quot;, &quot;Time&quot;, &quot;Diet&quot;))
+cast(melted_data, Diet ~ variable, mean, value.var = &quot;value&quot;)
+cast(melted_data, Diet ~ variable, mode, value.var = &quot;value&quot;)
