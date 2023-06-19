@@ -1,0 +1,19 @@
+# Compute the mean
+mean_value &lt;- mean(values)
+print(mean_value)
+
+# Compute the median
+median_value &lt;- median(values)
+print(median_value)
+
+# Compute the mode
+mode_value &lt;- names(table(values))[table(values) == max(table(values))]
+print(mode_value)
+# Find the second highest value
+second_highest &lt;- sort(unique(values), decreasing = TRUE)[2]
+
+print(second_highest)
+
+# Find the third lowest value
+third_lowest &lt;- sort(unique(values))[3]
+print(third_lowest)
